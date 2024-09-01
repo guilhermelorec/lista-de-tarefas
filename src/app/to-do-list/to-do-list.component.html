@@ -1,0 +1,38 @@
+<div class="centered-container">
+    <div class="flex-column gap-2">
+      <h1 [ngStyle]="{color: 'var(--primary-color)'}">Adicione uma tarefa</h1>
+      <p-floatLabel>
+        <input pInputText id="titulo" [(ngModel)]="titulo" />
+        <label for="titulo">Título</label>
+      </p-floatLabel>
+  
+      <p-floatLabel>
+        <input pInputText id="descricao" [(ngModel)]="descricao" />
+        <label for="descricao">Descrição</label>
+      </p-floatLabel>
+      <p-button label="Salvar" icon="pi pi-check" (click)="cadastrarTarefas()" />
+  
+      <div class="table-container">
+        <p-table [tableStyle] ="{'min-width':'40rem'}" [value]="tarefas" [scrollable]="true" scrollHeight="300px">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Título</th>
+              <th>Descrição</th>
+              <th>Ações</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-tarefas>
+            <tr>
+              <td>{{ tarefas.titulo }}</td>
+              <td>{{ tarefas.descricao }}</td>
+              <td>
+                <p-button icon="pi pi-pencil" [rounded]="true" [text]="true" [raised]="true" />
+                <p-button icon="pi pi-trash" (click)="excluirTarefa(tarefas.titulo)" [rounded]="true" [text]="true" [raised]="true" />
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </div>
+ 
